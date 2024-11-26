@@ -4,9 +4,15 @@
     <h1>{{homeMsg}}</h1>
     <h1>{{test}}</h1>
 
+    <h2>{{ accountTitle }}</h2>
+
     <ul>
-        {% for key, value in data %}
-            <li>{{ key }} = {{ value }}</li>
+        {% for index, values in data %}
+            <li> ID = {{index}}<ul>
+                {% for key, value in values %}
+                    <li>{{ key }} = {{ value }}</li>
+                {% endfor %}
+            </ul></li>
         {% endfor %}
     </ul>
 {% endblock %}
