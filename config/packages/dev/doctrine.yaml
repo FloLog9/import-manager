@@ -1,20 +1,12 @@
 doctrine:
     dbal:
-        default_connection: account
+        default_connection: tool
         connections:
             tool:
                 dbname:           toolssl_test
-                user:             tool4staffing
+                user:             '%env(TOOL_DATABASE_USER)%'
                 password:         '%env(TOOL_DATABASE_PASSWORD)%'
                 host:             '%env(TOOL_DATABASE_HOST)%'
-                server_version:   'mariadb-10.5.16'
-                profiling_collect_backtrace: '%kernel.debug%'
-                use_savepoints: true
-            account:
-                dbname:           confstarte_test
-                user:             tool4staffing
-                password:         '%env(ACCOUNT_DATABASE_PASSWORD)%'
-                host:             '%env(ACCOUNT_DATABASE_HOST)%'
                 server_version:   'mariadb-10.5.16'
                 profiling_collect_backtrace: '%kernel.debug%'
                 use_savepoints: true

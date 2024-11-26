@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\AccountConnectionManager\ConnectionManager;
 use App\Service\T4SWrapper\T4SInteraction;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,18 +15,21 @@ class HomeController extends AbstractController {
 
     private $db;
 
-    public function __construct(T4SInteraction $t4s, ManagerRegistry $db)
+    private $connectionManager;
+
+    public function __construct(T4SInteraction $t4s, ManagerRegistry $db, ConnectionManager $connectionManager)
     {
         $this->t4s = $t4s;
         $this->db = $db;
+        $this->connectionManager = $connectionManager;
     }
 
     #[Route('/')]
     public function index(): Response
     {
 
-        $connection = $this->db->getConnection('account');
-        $result = $connection->fetchAllAssociative('SELECT * FROM agents WHERE trash = 0');
+        $connection = $this->connectionManager->getConnection('confstarte_test');
+        $result = $connection->fetchAllAssociative('SELECT * FROM agents WHERE trash = 0 LIMIT 1');
 
         $connection = $this->db->getConnection('tool');
         $accountInfos = $connection->fetchAllAssociative('SELECT * FROM accounts WHERE trash = 0 AND id_unique = "confstarte"');

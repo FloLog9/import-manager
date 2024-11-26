@@ -22,3 +22,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\AccountConnectionManager\ConnectionManager:
+        arguments:
+            $dbHost: '%env(ACCOUNT_DATABASE_HOST)%'
+            $dbUser: '%env(ACCOUNT_DATABASE_USER)%'
+            $dbPassword: '%env(ACCOUNT_DATABASE_PASSWORD)%'
