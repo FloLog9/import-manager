@@ -33,7 +33,6 @@ class HomeController extends AbstractController {
 
         $connection = $this->db->getConnection('tool');
         $accountInfos = $connection->fetchAllAssociative('SELECT * FROM accounts WHERE trash = 0 AND id_unique = "confstarte"');
-
         
         return $this->render('home/index.html.twig', [
             'homeMsg' => 'Welcome!',
