@@ -4,7 +4,6 @@ namespace App\Service\AccountConnectionManager;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
-use Doctrine\DBAL\Tools\DsnParser;
 
 class ConnectionManager
 {
